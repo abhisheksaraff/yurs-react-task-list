@@ -1,7 +1,7 @@
 function TodoTasks() {
   return (
     <div className = "TodoTasks">
-      TodoList
+      Todo Tasks
     </div>
   )
 };
