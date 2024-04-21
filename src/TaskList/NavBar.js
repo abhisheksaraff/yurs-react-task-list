@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <div className = "NavBar">
-      Logo
+      <h1>Your Tasks</h1>
       <div className = "navigation-buttons">
         <Link to="/">Home</Link>
         <Link to="/CompletedTasks">Completed Tasks</Link>
