@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className = "footer">
+    <div className = "footer fixed-bottom">
       Footer
     </div>
   )
