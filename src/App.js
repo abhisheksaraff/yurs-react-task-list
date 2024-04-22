@@ -9,7 +9,10 @@ import createTask from "./TaskList/createTask";
 /* Functionality */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+
+/* Styles */
 import 'bootstrap/dist/css/bootstrap.css';
+import "./TaskList/App.css"
 
 function App() {
   /* SampleTasks */
@@ -67,7 +70,7 @@ function App() {
   const [selectedTags, setSelectedTags] = useState([]);
 
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
         <NavBar
           displayTags = {displayTags}
@@ -78,15 +81,15 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<AllTasks tasks={tasks} setTasks={setTasks} />}
+              element={<AllTasks tasks={tasks} setTasks={setTasks} selectedTags={selectedTags}/>}
             />
             <Route
               path="/TodoTasks"
-              element={<TodoTasks tasks={tasks} setTasks={setTasks} />}
+              element={<TodoTasks tasks={tasks} setTasks={setTasks} selectedTags={selectedTags}/>}
             />
             <Route
               path="/completedTasks"
-              element={<CompletedTasks tasks={tasks} setTasks={setTasks} />}
+              element={<CompletedTasks tasks={tasks} setTasks={setTasks} selectedTags={selectedTags}/>}
             />
           </Routes>
         </div>

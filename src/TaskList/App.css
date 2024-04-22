@@ -1,0 +1,42 @@
+ * {
+  background-color: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+}
+
+.logo{
+    font-size: 5rem;
+}
+
+.navigation{
+    display: flex;
+}
+
+.navigation-button{
+    text-decoration: none;
+    font-weight:lighter;
+    margin-right: 10px;
+    color: grey;
+}
+
+.navigation-button:hover{
+   color: white;
+}
+
+.content{
+    display: flex;
+    border: 1px solid red;
+    height: 100vh;
+    display: flex;
+}
+
+.footer{
+    margin-top: auto;
+}
