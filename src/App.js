@@ -1,18 +1,16 @@
 /* Components */
 import NavBar from "./TaskList/NavBar";
 import Footer from "./TaskList/Footer";
-import AllTasks from "./TaskList/AllTasks";
-import TodoTasks from "./TaskList/TodoTasks";
-import CompletedTasks from "./TaskList/CompletedTasks";
 import createTask from "./TaskList/createTask";
 
 /* Functionality */
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 /* Styles */
-import 'bootstrap/dist/css/bootstrap.css';
-import "./TaskList/App.css"
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+import AnimatedRoutes from "./TaskList/AnimatedRoutes";
 
 function App() {
   /* SampleTasks */
@@ -36,6 +34,41 @@ function App() {
       "school",
       "urgent",
       "weekly",
+    ]),
+    createTask("Cook Food", new Date("2024-04-23"), false, [
+      "non-urgent",
+      "daily",
+      "home",
+    ]),
+    createTask("Eye Exam", new Date("2024-07-09"), true, [
+      "medical",
+      "urgent",
+      "personal",
+    ]),
+    createTask("Replace Filter", new Date("2025-01-01"), false, [
+      "repeating",
+      "important",
+      "home",
+      "learn",
+    ]),
+    createTask("Go Shopping for clothes", new Date("2024-05-02"), true, [
+      "personal",
+      "non-urgent",
+    ]),
+    createTask("Take out Trash", new Date("2024-05-25"), false, [
+      "non-urgent",
+      "weekly",
+      "home",
+    ]),
+    createTask("Finish HomeWork for chemistry there is a lot to do. A lot of practice needs to be done.", new Date("2024-04-19"), true, [
+      "daily",
+      "urgent",
+      "school",
+    ]),
+    createTask("Final Exam", new Date("2024-12-02"), false, [
+      "urgent",
+      "quarterly",
+      "school",
     ]),
   ];
 
@@ -73,25 +106,14 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <NavBar
-          displayTags = {displayTags}
+          displayTags={displayTags}
           selectedTags={selectedTags}
           setSelectedTags={setSelectedTags}
         />
         <div className="content">
-          <Routes>
-            <Route
-              path="/"
-              element={<AllTasks tasks={tasks} setTasks={setTasks} selectedTags={selectedTags}/>}
-            />
-            <Route
-              path="/TodoTasks"
-              element={<TodoTasks tasks={tasks} setTasks={setTasks} selectedTags={selectedTags}/>}
-            />
-            <Route
-              path="/completedTasks"
-              element={<CompletedTasks tasks={tasks} setTasks={setTasks} selectedTags={selectedTags}/>}
-            />
-          </Routes>
+          <AnimatedRoutes tasks={tasks}
+                  setTasks={setTasks}
+                  selectedTags={selectedTags}/>
         </div>
         <Footer />
       </BrowserRouter>
