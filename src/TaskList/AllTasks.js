@@ -7,7 +7,7 @@ function AllTasks({ tasks, setTasks, selectedTags }) {
     <motion.div>
       <div className="task"></div>
       {tasks.map((task) => {
-        return <TaskThumbnail task={task} key={task.id} />;
+        return <TaskThumbnail task={task} key={task.id} selectedTags={selectedTags}/>;
       })}
     </motion.div>
   );

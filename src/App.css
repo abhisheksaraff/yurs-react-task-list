@@ -6,14 +6,14 @@
 }
 
 .logo {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 100;
   padding-left: 1rem;
 }
 
 .navigation {
   padding-left: 1rem;
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.2rem;
   display: flex;
 }
 
@@ -21,14 +21,47 @@
   text-decoration: none;
   font-weight: lighter;
   margin-right: 0.5rem;
-  color: grey;
   transition: padding 0.5s;
 }
 
 .navigation-button:hover {
-  color: white;
   padding-left: 2rem;
   padding-right: 2rem;
+  .pageName {
+    color: whitesmoke;
+  }
+}
+
+.selected {
+  color: white;
+}
+
+.not-selected {
+  color: grey;
+}
+
+.tags {
+  height: 1.5rem;
+  padding-left: 1.5rem;
+  display: flex;
+}
+
+.tag {
+  color: #848884;
+  cursor: pointer;
+  padding-right: 2rem;
+}
+
+.tag:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.selected{
+  color: white;
+}
+.not-selected{
+  color: grey;
 }
 
 .content {
@@ -40,9 +73,12 @@
   display: flex;
   width: 100vw;
   flex-wrap: wrap;
-  margin-top: 11.5rem;
+  margin-top: 11rem;
   padding-right: 20vw;
+}
 
+.content * {
+  overflow: hidden;
 }
 
 .taskThumbnail {
@@ -51,17 +87,80 @@
   margin-left: 0.3rem;
   margin-bottom: 0.3rem;
   padding: 1rem;
+  border-color: transparent;
+  text-align: left;
   transition: width 0.5s;
+  cursor: pointer;
 }
 
-.taskThumbnail > * {
+.taskThumbnail * {
   color: black;
   font-size: 1.2rem;
+  height: 5rem;
+  display: flex;
+}
+
+.taskDetails {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+}
+
+.taskThumbnailTop {
+  display: flex;
+  justify-content: space-between;
+  height: 40vh;
+}
+
+.description {
+  flex: 0 0 66%;
+}
+
+.interactiveButton {
+  border-radius: 50%;
+  border-color: transparent;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.3rem;
+  display: none;
+  transition: filter 0.3s;
+}
+
+.interactiveButton:hover {
+  filter: brightness(120%);
 }
 
 .taskThumbnail:hover {
   width: 20rem;
   border-radius: 3rem 3rem 3rem 3rem;
+  .interactiveButton,
+  .date {
+    display: flex;
+  }
+}
+
+.isCompleted {
+  background-color: yellowgreen;
+}
+
+.isNotCompleted {
+  background-color: orange;
+}
+
+.edit {
+  background-color: #ffc000;
+}
+
+.delete {
+  background-color: red;
+}
+
+.date {
+  font-size: 0.95rem;
+  color: #848884;
+  display: flex;
+  max-height: 2rem;
+  justify-content: space-around;
 }
 
 .color1 {
@@ -133,4 +232,8 @@ img {
   width: 2rem;
   height: 2rem;
   overflow: hidden;
+}
+
+.download-logo{
+  padding: 0.4rem;
 }

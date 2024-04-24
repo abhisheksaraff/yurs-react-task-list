@@ -4,7 +4,7 @@ import Footer from "./TaskList/Footer";
 import createTask from "./TaskList/createTask";
 
 /* Functionality */
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
 
 /* Styles */
@@ -83,24 +83,10 @@ function App() {
     return tags;
   };
 
-  /* Filter tasks by Tags */
-  const hasTag = (task, tag) => task.tags.includes(tag);
-
-  const getFilteredTasks = (tasks, filter) => {
-    if (filter == []) return tasks;
-
-    const filteredTasks = [];
-    tasks.forEach((task) => {
-      task.tags.forEach((tag) => {
-        if (filter.includes(tag) && !filteredTasks.includes(task))
-          filteredTasks.push(task);
-      });
-    });
-  };
-
   const [tasks, setTasks] = useState(sampleTasks);
   const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
   const [selectedTags, setSelectedTags] = useState([]);
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
   return (
     <div className="app">
@@ -109,13 +95,15 @@ function App() {
           displayTags={displayTags}
           selectedTags={selectedTags}
           setSelectedTags={setSelectedTags}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
         <div className="content">
           <AnimatedRoutes tasks={tasks}
                   setTasks={setTasks}
                   selectedTags={selectedTags}/>
         </div>
-        <Footer />
+        <Footer tasks={tasks}/>
       </BrowserRouter>
     </div>
   );
