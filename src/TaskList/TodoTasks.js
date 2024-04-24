@@ -2,7 +2,7 @@ import TaskThumbnail from "./TaskThumbnail";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-function TodoTasks({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
+function TodoTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask }) {
   const taskIsTodo = (task) => !task.isCompleted;
   const getTodoTasks = tasks.filter(taskIsTodo);
 
@@ -30,6 +30,7 @@ function TodoTasks({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
             selectedTags={selectedTags}
             toggleTaskStatus={toggleTaskStatus}
             reload={reload}
+            deleteTask={deleteTask}
           />
         );
       })}

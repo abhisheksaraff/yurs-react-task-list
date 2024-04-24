@@ -5,7 +5,7 @@ import createTask from "./TaskList/createTask";
 
 /* Functionality */
 import { BrowserRouter } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /* Styles */
 import "bootstrap/dist/css/bootstrap.css";
@@ -102,6 +102,20 @@ function App() {
     setTasks(tempTasks);
   };
 
+  /* Delete Tasks */
+  const deleteTask = (taskId) => {
+    let tempTasks = []; //Holds a copy of tasks
+    tasks.forEach((task) => {
+      if (task.id !== taskId) {
+        tempTasks.push(task)
+      }
+
+      setTasks(tempTasks);
+    });
+
+    setTasks(tempTasks);
+  };
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -118,6 +132,7 @@ function App() {
             setTasks={setTasks}
             selectedTags={selectedTags}
             toggleTaskStatus={toggleTaskStatus}
+            deleteTask={deleteTask}
           />
         </div>
         <Footer tasks={tasks} />

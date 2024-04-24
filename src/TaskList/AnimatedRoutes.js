@@ -5,7 +5,7 @@ import CompletedTasks from "./CompletedTasks";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-function AnimatedRoutes({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
+function AnimatedRoutes({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask }) {
   const location = useLocation();
 
   return (
@@ -19,6 +19,7 @@ function AnimatedRoutes({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
               setTasks={setTasks}
               selectedTags={selectedTags}
               toggleTaskStatus={toggleTaskStatus}
+              deleteTask={deleteTask}
             />
           }
         />
@@ -30,6 +31,7 @@ function AnimatedRoutes({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
               setTasks={setTasks}
               selectedTags={selectedTags}
               toggleTaskStatus={toggleTaskStatus}
+              deleteTask={deleteTask}
             />
           }
         />
@@ -41,6 +43,7 @@ function AnimatedRoutes({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
               setTasks={setTasks}
               selectedTags={selectedTags}
               toggleTaskStatus={toggleTaskStatus}
+              deleteTask={deleteTask}
             />
           }
         />

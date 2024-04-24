@@ -1,7 +1,7 @@
 import TaskThumbnail from "./TaskThumbnail";
 import { motion } from "framer-motion";
 
-function AllTasks({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
+function AllTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask }) {
   const reload = () => {}
   return (
     //<motion.div className="AllTasks" initial={{opacity:0}} animate={{opacity:1}}  exit={{opacity:0, transition: {duration: 0.5}}}>
@@ -15,6 +15,7 @@ function AllTasks({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
             selectedTags={selectedTags}
             toggleTaskStatus={toggleTaskStatus}
             reload={reload}
+            deleteTask={deleteTask}
           />
         );
       })}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TaskThumbnail from "./TaskThumbnail";
 import { motion } from "framer-motion";
 
-function CompletedTasks({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
+function CompletedTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask }) {
   const taskIsCompleted = (task) => task.isCompleted;
   const getCompletedTasks = tasks.filter(taskIsCompleted);
 
@@ -30,6 +30,7 @@ function CompletedTasks({ tasks, setTasks, selectedTags, toggleTaskStatus }) {
             selectedTags={selectedTags}
             toggleTaskStatus={toggleTaskStatus}
             reload={reload}
+            deleteTask={deleteTask}
           />
         );
       })}

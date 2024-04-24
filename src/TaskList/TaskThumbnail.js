@@ -6,6 +6,7 @@ function TaskThumbnail({
   selectedTags,
   toggleTaskStatus,
   reload,
+  deleteTask
 }) {
   const hasCommonElements = (array1, array2) => {
     let commonElements = [];
@@ -75,6 +76,10 @@ function TaskThumbnail({
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Delete"
+                onClick={() => {
+                  deleteTask(task.id)
+                  reload(task.id);
+                }}
               ></div>
             </div>
           </div>
