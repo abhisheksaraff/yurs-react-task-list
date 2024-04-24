@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-function TaskThumbnail({ task, taskId, selectedTags }) {
+function TaskThumbnail({
+  task,
+  taskId,
+  selectedTags,
+  toggleTaskStatus,
+  reload,
+}) {
   const hasCommonElements = (array1, array2) => {
     let commonElements = [];
     array1.forEach((element) => {
@@ -17,7 +23,11 @@ function TaskThumbnail({ task, taskId, selectedTags }) {
     const selectedTagsArray = Object.values(selectedTags).map((tag) => tag);
     const taskTagsArray = Object.values(task.tags).map((tag) => tag);
 
-    if (selectedTagsArray.length===0 || hasCommonElements(selectedTagsArray, taskTagsArray)) setPassesFilter(true);
+    if (
+      selectedTagsArray.length === 0 ||
+      hasCommonElements(selectedTagsArray, taskTagsArray)
+    )
+      setPassesFilter(true);
     else setPassesFilter(false);
   }, [selectedTags, task]);
 
@@ -31,33 +41,41 @@ function TaskThumbnail({ task, taskId, selectedTags }) {
             </div>
             <div className={"taskThumbnailTopRight " + task.color}>
               {task.isCompleted && (
-                <button
+                <div
                   className="interactiveButton isCompleted"
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Mark Incomplete"
-                ></button>
+                  onClick={() => {
+                    toggleTaskStatus(task.id);
+                    reload(task.id);
+                  }}
+                ></div>
               )}
               {!task.isCompleted && (
-                <button
+                <div
                   className="interactiveButton isNotCompleted"
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Mark Complete"
-                ></button>
+                  onClick={() => {
+                    toggleTaskStatus(task.id);
+                    reload(task.id);
+                  }}
+                ></div>
               )}
-              <button
+              <div
                 className="interactiveButton edit"
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Edit"
-              ></button>
-              <button
+              ></div>
+              <div
                 className="interactiveButton delete "
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Delete"
-              ></button>
+              ></div>
             </div>
           </div>
           <div className={"taskThumbnailBottom date " + task.color}>

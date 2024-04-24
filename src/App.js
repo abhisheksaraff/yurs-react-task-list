@@ -60,11 +60,12 @@ function App() {
       "weekly",
       "home",
     ]),
-    createTask("Finish HomeWork for chemistry there is a lot to do. A lot of practice needs to be done.", new Date("2024-04-19"), true, [
-      "daily",
-      "urgent",
-      "school",
-    ]),
+    createTask(
+      "Finish HomeWork for chemistry there is a lot to do. A lot of practice needs to be done.",
+      new Date("2024-04-19"),
+      true,
+      ["daily", "urgent", "school"]
+    ),
     createTask("Final Exam", new Date("2024-12-02"), false, [
       "urgent",
       "quarterly",
@@ -88,6 +89,19 @@ function App() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
+  /* Mark Task Complete/ Incomplete */
+  const toggleTaskStatus = (taskId) => {
+    let tempTasks = Object.values(tasks).map((task) => task); //Holds a copy of tasks
+    tempTasks.forEach((task) => {
+      if (task.id === taskId) {
+        if (task.isCompleted) task.isCompleted = false;
+        else task.isCompleted = true;
+      }
+    });
+
+    setTasks(tempTasks);
+  };
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -99,11 +113,14 @@ function App() {
           setCurrentPage={setCurrentPage}
         />
         <div className="content">
-          <AnimatedRoutes tasks={tasks}
-                  setTasks={setTasks}
-                  selectedTags={selectedTags}/>
+          <AnimatedRoutes
+            tasks={tasks}
+            setTasks={setTasks}
+            selectedTags={selectedTags}
+            toggleTaskStatus={toggleTaskStatus}
+          />
         </div>
-        <Footer tasks={tasks}/>
+        <Footer tasks={tasks} />
       </BrowserRouter>
     </div>
   );

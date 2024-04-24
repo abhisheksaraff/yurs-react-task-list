@@ -5,7 +5,7 @@ function Footer({ tasks }) {
     )}`;
     const link = document.createElement("a");
     link.href = jsonString;
-    link.download = "data.json";
+    link.download = "tasks.json";
 
     link.click();
   };
