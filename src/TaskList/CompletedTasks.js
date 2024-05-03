@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskThumbnail from "./Components/TaskThumbnail";
 
 function CompletedTasks({
@@ -12,9 +12,11 @@ function CompletedTasks({
   blurPage,
 }) {
   const taskIsCompleted = (task) => task.isCompleted;
+  
   const getCompletedTasks = tasks.filter(taskIsCompleted);
-
   const [completedTasks, setCompletedTasks] = useState(getCompletedTasks);
+
+  useEffect(() => setCompletedTasks(getCompletedTasks),[tasks]);
 
   /* Mark Task Complete/ Incomplete */
   const reload = (taskId) => {

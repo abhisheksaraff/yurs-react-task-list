@@ -1,5 +1,5 @@
 import TaskThumbnail from "./Components/TaskThumbnail";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function TodoTasks({
   tasks,
@@ -15,6 +15,8 @@ function TodoTasks({
   const getTodoTasks = tasks.filter(taskIsTodo);
 
   const [todoTasks, setTodoTasks] = useState(getTodoTasks);
+
+  useEffect(() => setTodoTasks(getTodoTasks),[tasks]);
 
   /* Mark Task Complete/ Incomplete */
   const reload = (taskId) => {

@@ -17,11 +17,14 @@ import "./App.css";
 import createTask from "./TaskList/createTask";
 
 function App() {
-  /* SampleTasks */
-  const sampleTasks = SampleTasks();
+  const [tasks, setTasks] = useState(SampleTasks());
+  const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
 
   /* Extract Tags from List */
-  const getDisplayTags = (list) => {
+  function getDisplayTags(list) {
     const tags = [];
     list.forEach((item) => {
       item.tags.forEach((tag) => {
@@ -29,13 +32,7 @@ function App() {
       });
     });
     return tags;
-  };
-
-  const [tasks, setTasks] = useState(sampleTasks);
-  const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [currentPage, setCurrentPage] = useState(window.location.pathname);
-  const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
+  }
 
   /* Add Task */
   const addTask = (task) => {
