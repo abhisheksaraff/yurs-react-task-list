@@ -11,11 +11,7 @@ const SampleTasks = () => [
     "urgent",
     "school",
   ]),
-  createTask("Final Exam", new Date("2024-12-02").toDateString(), false, [
-    "urgent",
-    "quarterly",
-    "school",
-  ]),
+  createTask("Final Exam", new Date("2024-12-02").toDateString(), false, []),
   createTask("Submit Assignment", new Date("2023-10-27").toDateString(), true, [
     "school",
     "urgent",
@@ -52,7 +48,7 @@ const SampleTasks = () => [
     "Finish HomeWork for chemistry there is a lot to do.",
     new Date("2024-04-19").toDateString(),
     true,
-    ["daily", "urgent", "school"]
+    []
   ),
   createTask("Final Exam", new Date("2024-12-02").toDateString(), false, [
     "urgent",
