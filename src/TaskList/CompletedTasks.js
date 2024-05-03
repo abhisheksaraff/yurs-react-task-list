@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react";
-import TaskThumbnail from "./TaskThumbnail";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import TaskThumbnail from "./Components/TaskThumbnail";
 
-function CompletedTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask }) {
+function CompletedTasks({
+  tasks,
+  setTasks,
+  selectedTags,
+  toggleTaskStatus,
+  deleteTask,
+  displayTaskPopUp,
+  setTaskToEdit,
+  blurPage,
+}) {
   const taskIsCompleted = (task) => task.isCompleted;
   const getCompletedTasks = tasks.filter(taskIsCompleted);
 
@@ -19,22 +27,25 @@ function CompletedTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, delet
   };
 
   return (
-    //<motion.div className="CompletedTasks" initial={{opacity:0}} animate={{opacity:1}}  exit={{opacity:0, transition: {duration: 0.5}}}>
-    <motion.div>
+    <div className="completedTasks">
       <div className="task"></div>
       {completedTasks.map((task) => {
         return (
           <TaskThumbnail
+            tasks={tasks}
             task={task}
             key={task.id}
             selectedTags={selectedTags}
             toggleTaskStatus={toggleTaskStatus}
             reload={reload}
             deleteTask={deleteTask}
+            displayTaskPopUp={displayTaskPopUp}
+            setTaskToEdit={setTaskToEdit}
+            blurPage={blurPage}
           />
         );
       })}
-    </motion.div>
+    </div>
   );
 }
 

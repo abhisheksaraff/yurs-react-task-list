@@ -1,8 +1,16 @@
-import TaskThumbnail from "./TaskThumbnail";
+import TaskThumbnail from "./Components/TaskThumbnail";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
-function TodoTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask }) {
+function TodoTasks({
+  tasks,
+  setTasks,
+  selectedTags,
+  toggleTaskStatus,
+  deleteTask,
+  displayTaskPopUp,
+  setTaskToEdit,
+  blurPage,
+}) {
   const taskIsTodo = (task) => !task.isCompleted;
   const getTodoTasks = tasks.filter(taskIsTodo);
 
@@ -19,22 +27,25 @@ function TodoTasks({ tasks, setTasks, selectedTags, toggleTaskStatus, deleteTask
   };
 
   return (
-    //<motion.div className="TodoTasks" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0, transition: {duration: 0.5}}}>
-    <motion.div>
+    <div className="todoTasks">
       <div className="task"></div>
       {todoTasks.map((task) => {
         return (
           <TaskThumbnail
+            tasks={tasks}
             task={task}
             key={task.id}
             selectedTags={selectedTags}
             toggleTaskStatus={toggleTaskStatus}
             reload={reload}
             deleteTask={deleteTask}
+            displayTaskPopUp={displayTaskPopUp}
+            setTaskToEdit={setTaskToEdit}
+            blurPage={blurPage}
           />
         );
       })}
-    </motion.div>
+    </div>
   );
 }
 

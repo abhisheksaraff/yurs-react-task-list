@@ -9,6 +9,7 @@
   font-size: 4rem;
   font-weight: 100;
   padding-left: 1rem;
+  cursor: default;
 }
 
 .navigation {
@@ -27,6 +28,7 @@
 .navigation-button:hover {
   padding-left: 2rem;
   padding-right: 2rem;
+  cursor: pointer;
   .pageName {
     color: whitesmoke;
   }
@@ -38,6 +40,54 @@
 
 .not-selected {
   color: grey;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20.2rem;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 20.2rem;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 10.2rem;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 
 .tags {
@@ -57,10 +107,10 @@
   text-decoration: underline;
 }
 
-.selected{
+.selected {
   color: white;
 }
-.not-selected{
+.not-selected {
   color: grey;
 }
 
@@ -90,7 +140,6 @@
   border-color: transparent;
   text-align: left;
   transition: width 0.5s;
-  cursor: pointer;
 }
 
 .taskThumbnail * {
@@ -98,6 +147,7 @@
   font-size: 1.2rem;
   height: 5rem;
   display: flex;
+  cursor: default;
 }
 
 .taskDetails {
@@ -124,6 +174,7 @@
   margin-left: 0.3rem;
   display: none;
   transition: filter 0.3s;
+  cursor: pointer;
 }
 
 .interactiveButton:hover {
@@ -137,14 +188,6 @@
   .date {
     display: flex;
   }
-}
-
-.isCompleted {
-  background-color: yellowgreen;
-}
-
-.isNotCompleted {
-  background-color: orange;
 }
 
 .edit {
@@ -234,6 +277,299 @@ img {
   overflow: hidden;
 }
 
-.download-logo{
+.download-logo {
   padding: 0.4rem;
+}
+
+#snackbar {
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+  width: 15rem;
+  margin-left: -10%;
+  background-color: rgb(78, 78, 78);
+  border-radius: 1.5rem;
+  opacity: 0.4;
+  color: #fff;
+  text-align: center;
+  padding: 0.25rem;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 3rem;
+  font-size: 0.8rem;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 3rem;
+    opacity: 0.4;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 3rem;
+    opacity: 0.4;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 3rem;
+    opacity: 0.4;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 3rem;
+    opacity: 0.4;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.page.blur {
+  -webkit-animation: blur 0.4s linear forwards;
+  -moz-animation: blur 0.4s linear forwards;
+  -ms-animation: blur 0.4s linear forwards;
+  -o-animation: blur 0.4s linear forwards;
+  animation: blur 0.4s linear forwards;
+  pointer-events: none;
+}
+@-webkit-keyframes blur {
+  to {
+    -webkit-filter: blur(100px);
+    filter: blur(100px);
+  }
+}
+@-moz-keyframes blur {
+  to {
+    -moz-filter: blur(100px);
+    filter: blur(100px);
+  }
+}
+@keyframes blur {
+  to {
+    -webkit-filter: blur(100px);
+    -moz-filter: blur(100px);
+    filter: blur(100px);
+  }
+}
+
+.taskPopUp {
+  display: none;
+  height: 30rem;
+  width: 32rem;
+  position: absolute;
+  top: -50vh;
+  left: 33%;
+  top: 20%;
+  border-radius: 4rem 4rem 0 4rem;
+  box-shadow: 10px 10px 60px black;
+  background-color: #f7d44c;
+}
+
+.taskTop{
+  display: flex;
+  justify-content: space-between;
+}
+
+#taskHeading {
+  font-size: 4rem;
+  font-weight: 100%;
+  cursor: default;
+}
+
+#taskCancel{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: black;
+  font-weight:lighter;
+  max-height: 6rem;
+  font-size: 6rem;
+  border-radius: 10rem;
+  transform: rotate(225deg);
+  position: absolute;
+  left: 75%;
+  top: 5%;
+  z-index: 0;
+}
+
+#taskCancel:hover {
+  cursor: pointer;
+  color: #585858;
+}
+
+.taskPopUp * {
+  background-color: #f7d44c;
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+}
+
+.taskForm {
+  margin: 0.3rem 3rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#taskDescription {
+  height: 11rem;
+  width: 26rem;
+  resize: none;
+  outline: none;
+  padding: 1.1rem;
+  text-align: start;
+  /*border: 0.18rem solid #f7d44c;*/
+  border: 1px solid black;
+  border-radius: 1rem;
+  /*box-shadow: inset 0 0 0.22rem 0.22rem rgba(124, 122, 114, 0.096);*/
+  z-index: 1;
+}
+
+#taskTags {
+  width: 26rem;
+  outline: none;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: start;
+  /*border: 0.18rem solid #f7d44c;*/
+  border-radius: 0.8rem;
+  /*box-shadow: inset 0 0 0.22rem 0.22rem rgba(124, 122, 114, 0.096);*/
+  border: 1px solid black;
+}
+
+textarea::placeholder,
+#taskTags::placeholder {
+  color: #8488844c;
+}
+
+.attributes {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem 0;
+  justify-content: space-between;
+}
+
+.attributes > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#taskStatus {
+  border-radius: 50%;
+  border-color: transparent;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: filter 0.3s;
+  cursor: pointer;
+}
+
+#taskStatus:hover {
+  filter: brightness(115%);
+}
+
+.statusText {
+  /*color: #848884c0;*/
+  color: black;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.isCompleted {
+  background-color: yellowgreen;
+}
+
+.isNotCompleted {
+  background-color: orange;
+}
+
+.hasDueDate {
+  height: 1.8rem;
+  width: 1.8rem;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+}
+
+.true {
+  background-color: yellowgreen;
+}
+.false {
+  background-color: orange;
+}
+
+#datePicker {
+  padding: 0 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid black;
+  margin-right: 0.4rem;
+  background-color: #f7d44c;
+  text-align: center;
+  max-width: 7.5rem;
+}
+
+#datePicker.false{
+  display: none;
+}
+#datePicker.true{
+  display: flex;
+}
+
+#datePicker:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.hasDueDate:hover{
+  filter:brightness(90%);
+  cursor: pointer;
+}
+
+#taskBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+#taskBottom > * {
+  cursor: pointer;
+  border-radius: 0.8rem;
+  color: black;
+  height: 3rem;
+  white-space: 6rem;
+  align-content: center;
+}
+
+#taskBottomFinish {
+  padding: 0 2.7rem;
+  font-size: 2rem;
+  border: 1px solid black;
+}
+
+#taskBottom > *:hover {
+  color: white;
+  background-color: black;
 }

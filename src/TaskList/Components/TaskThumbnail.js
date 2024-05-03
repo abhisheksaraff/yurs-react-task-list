@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
 function TaskThumbnail({
+  tasks,
   task,
   taskId,
   selectedTags,
   toggleTaskStatus,
   reload,
-  deleteTask
+  deleteTask,
+  displayTaskPopUp,
+  setTaskToEdit,
+  blurPage,
 }) {
   const hasCommonElements = (array1, array2) => {
     let commonElements = [];
@@ -69,7 +73,12 @@ function TaskThumbnail({
                 className="interactiveButton edit"
                 data-toggle="tooltip"
                 data-placement="top"
-                title="Edit"
+                title="Expand"
+                onClick={() => {
+                  blurPage(true);
+                  setTaskToEdit({...task});
+                  displayTaskPopUp(true);
+                }}
               ></div>
               <div
                 className="interactiveButton delete "
@@ -77,14 +86,14 @@ function TaskThumbnail({
                 data-placement="top"
                 title="Delete"
                 onClick={() => {
-                  deleteTask(task.id)
+                  deleteTask(task.id);
                   reload(task.id);
                 }}
               ></div>
             </div>
           </div>
           <div className={"taskThumbnailBottom date " + task.color}>
-            {task.dueDate.toDateString()}
+            {task.dueDate}
           </div>
         </div>
       </div>

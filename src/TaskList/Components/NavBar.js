@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import Tag from "./Tag";
+import createTask from "../createTask";
 
-function NavBar({ displayTags, selectedTags, setSelectedTags, currentPage, setCurrentPage }) {
+function NavBar({
+  displayTags,
+  selectedTags,
+  setSelectedTags,
+  currentPage,
+  setCurrentPage,
+  blurPage,
+  displayTaskPopUp,
+  setTaskToEdit
+}) {
   return (
     <div className="NavBar fixed-top">
       <div className="logo">My Tasks</div>
@@ -11,9 +21,7 @@ function NavBar({ displayTags, selectedTags, setSelectedTags, currentPage, setCu
           className="navigation-button badge rounded-pill border-light border border-1 fs-5"
           onClick={() => setCurrentPage("/")}
         >
-          {currentPage === "/" && (
-            <div className="pageName selected">All</div>
-          )}
+          {currentPage === "/" && <div className="pageName selected">All</div>}
           {!(currentPage === "/") && (
             <div className="pageName not-selected">All</div>
           )}
@@ -42,10 +50,28 @@ function NavBar({ displayTags, selectedTags, setSelectedTags, currentPage, setCu
             <div className="pageName not-selected">Todo</div>
           )}
         </Link>
+        <div
+          className="navigation-button badge rounded-pill border-white border border-1 fs-5"
+          onClick={() => {
+            blurPage(true);
+            setTaskToEdit(createTask("", "", false, []));
+            displayTaskPopUp(true);
+          }}
+        >
+          <div className="pageName not-selected">
+            Add Task
+          </div>
+        </div>
       </div>
+
       <div className="tags">
         {displayTags.map((tag) => (
-          <Tag key={tag} tag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+          <Tag
+            key={tag}
+            tag={tag}
+            selectedTags={selectedTags}
+            setSelectedTags={setSelectedTags}
+          />
         ))}
       </div>
     </div>

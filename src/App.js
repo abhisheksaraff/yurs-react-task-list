@@ -1,77 +1,24 @@
 /* Components */
-import NavBar from "./TaskList/NavBar";
-import Footer from "./TaskList/Footer";
-import createTask from "./TaskList/createTask";
+import NavBar from "./TaskList/Components/NavBar";
+import Footer from "./TaskList/Components/Footer";
+import SampleTasks from "./TaskList/Components/SampleTasks";
+import TaskPopUp from "./TaskList/Components/TaskPopUp";
 
 /* Functionality */
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AllTasks from "./TaskList/AllTasks";
+import TodoTasks from "./TaskList/TodoTasks";
+import CompletedTasks from "./TaskList/CompletedTasks";
 
 /* Styles */
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import AnimatedRoutes from "./TaskList/AnimatedRoutes";
+import createTask from "./TaskList/createTask";
 
 function App() {
   /* SampleTasks */
-  const sampleTasks = [
-    createTask("Take out Trash", new Date("2024-05-25"), false, [
-      "non-urgent",
-      "weekly",
-      "home",
-    ]),
-    createTask("Finish HomeWork", new Date("2024-04-19"), true, [
-      "daily",
-      "urgent",
-      "school",
-    ]),
-    createTask("Final Exam", new Date("2024-12-02"), false, [
-      "urgent",
-      "quarterly",
-      "school",
-    ]),
-    createTask("Submit Assignment", new Date("2023-10-27"), true, [
-      "school",
-      "urgent",
-      "weekly",
-    ]),
-    createTask("Cook Food", new Date("2024-04-23"), false, [
-      "non-urgent",
-      "daily",
-      "home",
-    ]),
-    createTask("Eye Exam", new Date("2024-07-09"), true, [
-      "medical",
-      "urgent",
-      "personal",
-    ]),
-    createTask("Replace Filter", new Date("2025-01-01"), false, [
-      "repeating",
-      "important",
-      "home",
-      "learn",
-    ]),
-    createTask("Go Shopping for clothes", new Date("2024-05-02"), true, [
-      "personal",
-      "non-urgent",
-    ]),
-    createTask("Take out Trash", new Date("2024-05-25"), false, [
-      "non-urgent",
-      "weekly",
-      "home",
-    ]),
-    createTask(
-      "Finish HomeWork for chemistry there is a lot to do. A lot of practice needs to be done.",
-      new Date("2024-04-19"),
-      true,
-      ["daily", "urgent", "school"]
-    ),
-    createTask("Final Exam", new Date("2024-12-02"), false, [
-      "urgent",
-      "quarterly",
-      "school",
-    ]),
-  ];
+  const sampleTasks = SampleTasks();
 
   /* Extract Tags from List */
   const getDisplayTags = (list) => {
@@ -88,6 +35,15 @@ function App() {
   const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
   const [selectedTags, setSelectedTags] = useState([]);
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
+
+  /* Add Task */
+  const addTask = (task) => {
+    let tempTasks = Object.values(tasks).map((task) => task);
+    tempTasks.push(task);
+    setTasks(tempTasks);
+    showNotification("New task added.");
+  };
 
   /* Mark Task Complete/ Incomplete */
   const toggleTaskStatus = (taskId) => {
@@ -96,46 +52,127 @@ function App() {
       if (task.id === taskId) {
         if (task.isCompleted) task.isCompleted = false;
         else task.isCompleted = true;
+
+        showNotification(
+          "Task status set to " + (task.isCompleted ? "Completed." : "Todo.")
+        );
       }
     });
 
     setTasks(tempTasks);
   };
 
-  /* Delete Tasks */
+  /* Delete Task */
   const deleteTask = (taskId) => {
     let tempTasks = []; //Holds a copy of tasks
     tasks.forEach((task) => {
-      if (task.id !== taskId) {
-        tempTasks.push(task)
-      }
-
-      setTasks(tempTasks);
+      if (task.id !== taskId) tempTasks.push(task);
     });
 
-    setTasks(tempTasks);
+    setTasks([...tempTasks]);
+    showNotification("Task Deleted.");
+  };
+
+  /* Show Notification on User Action */
+  const showNotification = (message) => {
+    let snackBar = document.getElementById("snackbar");
+    snackBar.innerHTML = message;
+    snackBar.className = "show";
+    setTimeout(function () {
+      snackBar.className = snackBar.className.replace("show", "");
+    }, 1000);
+  };
+
+  /* Blur Page and remove user interaction with background */
+  const blurPage = (choice) => {
+    const page = document.getElementsByClassName("page")[0];
+    if (choice) page.classList.add("blur");
+    else page.classList.remove("blur");
+  };
+
+  /* Bring TaskPopUp to front */
+  const displayTaskPopUp = (choice) => {
+    const taskPopUp = document.getElementsByClassName("taskPopUp")[0];
+    if (choice) taskPopUp.style.display = "block";
+    else taskPopUp.style.display = "none";
   };
 
   return (
     <div className="app">
       <BrowserRouter>
-        <NavBar
-          displayTags={displayTags}
-          selectedTags={selectedTags}
-          setSelectedTags={setSelectedTags}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-        <div className="content">
-          <AnimatedRoutes
-            tasks={tasks}
-            setTasks={setTasks}
+        <div className="page">
+          <NavBar
+            displayTags={displayTags}
             selectedTags={selectedTags}
-            toggleTaskStatus={toggleTaskStatus}
-            deleteTask={deleteTask}
+            setSelectedTags={setSelectedTags}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            blurPage={blurPage}
+            displayTaskPopUp={displayTaskPopUp}
+            setTaskToEdit={setTaskToEdit}
           />
+          <div className="content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <AllTasks
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    selectedTags={selectedTags}
+                    toggleTaskStatus={toggleTaskStatus}
+                    deleteTask={deleteTask}
+                    displayTaskPopUp={displayTaskPopUp}
+                    setTaskToEdit={setTaskToEdit}
+                    blurPage={blurPage}
+                  />
+                }
+              />
+              <Route
+                path="/TodoTasks"
+                element={
+                  <TodoTasks
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    selectedTags={selectedTags}
+                    toggleTaskStatus={toggleTaskStatus}
+                    deleteTask={deleteTask}
+                    displayTaskPopUp={displayTaskPopUp}
+                    setTaskToEdit={setTaskToEdit}
+                    blurPage={blurPage}
+                  />
+                }
+              />
+              <Route
+                path="/completedTasks"
+                element={
+                  <CompletedTasks
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    selectedTags={selectedTags}
+                    toggleTaskStatus={toggleTaskStatus}
+                    deleteTask={deleteTask}
+                    displayTaskPopUp={displayTaskPopUp}
+                    setTaskToEdit={setTaskToEdit}
+                    blurPage={blurPage}
+                  />
+                }
+              />
+            </Routes>
+            <div id="snackbar"></div>
+          </div>
+          <Footer tasks={tasks} />
         </div>
-        <Footer tasks={tasks} />
+        <TaskPopUp
+          displayTaskPopUp={displayTaskPopUp}
+          blurPage={blurPage}
+          tasks={tasks}
+          setTasks={setTasks}
+          addTask={addTask}
+          deleteTask={deleteTask}
+          taskToEdit={taskToEdit}
+          showNotification={showNotification}
+        />
       </BrowserRouter>
     </div>
   );
