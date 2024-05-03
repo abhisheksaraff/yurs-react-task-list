@@ -23,6 +23,10 @@ function App() {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
   const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
 
+  useEffect(() => {
+    setDisplayTags(getDisplayTags(tasks));
+  }, [tasks]);
+
   /* Extract Tags from List */
   function getDisplayTags(list) {
     const tags = [];

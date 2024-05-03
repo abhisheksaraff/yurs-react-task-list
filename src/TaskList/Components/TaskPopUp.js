@@ -12,15 +12,31 @@ function TaskPopUp({
   showNotification,
 }) {
   const [hasDueDate, setHasDueDate] = useState(true);
-  const [yyyymmdd, setyyyymmdd] = useState(() => {
+  const [yyyymmdd, setyyyymmdd] = useState(() => {    //Default data for datepicker
     if (hasDueDate) return getDueDate(new Date().toDateString());
     else getDueDate(taskToEdit.dueDate);
   });
   const [taskIsCompleted, setTaskIsCompleted] = useState(
     taskToEdit.isCompleted
   );
+  const [tags, setTags] = useState(tagsToString(taskToEdit)); //Tags for task being added/ updated
 
-  const [tags, setTags] = useState(tagsToString(taskToEdit));
+  useEffect(() => {
+    //Update Date
+    if (taskToEdit.dueDate === "") {
+      setHasDueDate(false);
+      setyyyymmdd(getDueDate(new Date().toDateString()));
+    } else {
+      setHasDueDate(true);
+      setyyyymmdd(getDueDate(taskToEdit.dueDate));
+    }
+
+    //Update Status
+    setTaskIsCompleted(taskToEdit.isCompleted);
+
+    //Update Tags
+    setTags(tagsToString(taskToEdit));
+  }, [taskToEdit]);
 
   function tagsToString(task) {
     if (task.tags.length > 0) return task.tags.join(" ");
@@ -64,24 +80,7 @@ function TaskPopUp({
     }
   };
 
-  useEffect(() => {
-    //Update Date
-    if (taskToEdit.dueDate === "") {
-      setHasDueDate(false);
-      setyyyymmdd(getDueDate(new Date().toDateString()));
-    } else {
-      setHasDueDate(true);
-      setyyyymmdd(getDueDate(taskToEdit.dueDate));
-    }
-
-    //Update Status
-    setTaskIsCompleted(taskToEdit.isCompleted);
-
-    //Update Tags
-    setTags(tagsToString(taskToEdit));
-  }, [taskToEdit]);
-
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const descriptionData = e.target.description.value;
@@ -154,7 +153,7 @@ function TaskPopUp({
 
   return (
     <div className="taskPopUp">
-      <form className="taskForm" onSubmit={handleSubmit}>
+      <form className="taskForm" onSubmit={handleFormSubmit}>
         <div className="taskTop">
           <div id="taskHeading">Task</div>
           <div

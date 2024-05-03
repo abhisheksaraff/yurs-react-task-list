@@ -12,22 +12,13 @@ function TaskThumbnail({
   setTaskToEdit,
   blurPage,
 }) {
-  const hasCommonElements = (array1, array2) => {
-    let commonElements = [];
-    array1.forEach((element) => {
-      if (array2.includes(element)) commonElements.push(element);
-    });
-
-    if (commonElements.length === array1.length) return true;
-    return false;
-  };
-
   const [passesFilter, setPassesFilter] = useState(true);
 
   useEffect(() => {
-    const selectedTagsArray = Object.values(selectedTags).map((tag) => tag);
-    const taskTagsArray = Object.values(task.tags).map((tag) => tag);
+    const selectedTagsArray = Object.values(selectedTags).map((tag) => tag);  //Selected tags
+    const taskTagsArray = Object.values(task.tags).map((tag) => tag);         //Tags from each task
 
+    //Sets Task display true if it has common tags with selected tags
     if (
       selectedTagsArray.length === 0 ||
       hasCommonElements(selectedTagsArray, taskTagsArray)
@@ -35,6 +26,16 @@ function TaskThumbnail({
       setPassesFilter(true);
     else setPassesFilter(false);
   }, [selectedTags, task]);
+
+  function hasCommonElements(array1, array2) {
+    let commonElements = [];
+    array1.forEach((element) => {
+      if (array2.includes(element)) commonElements.push(element);
+    });
+
+    if (commonElements.length === array1.length) return true;
+    return false;
+  }
 
   return (
     passesFilter && (
@@ -76,7 +77,7 @@ function TaskThumbnail({
                 title="Expand"
                 onClick={() => {
                   blurPage(true);
-                  setTaskToEdit({...task});
+                  setTaskToEdit({ ...task });
                   displayTaskPopUp(true);
                 }}
               ></div>

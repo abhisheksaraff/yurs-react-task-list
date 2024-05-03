@@ -5,6 +5,7 @@
   user-select: none;
 }
 
+/*** NavBar ***/
 .logo {
   font-size: 4rem;
   font-weight: 100;
@@ -91,9 +92,10 @@
 }
 
 .tags {
-  height: 1.5rem;
+  height: 2rem;
   padding-left: 1.5rem;
   display: flex;
+  overflow: scroll;
 }
 
 .tag {
@@ -114,9 +116,11 @@
   color: grey;
 }
 
+/*** Body ***/
 .content {
   padding-left: 1.5rem;
   margin-right: 20rem;
+  margin-bottom: 5rem;
 }
 
 .content > * {
@@ -253,6 +257,7 @@
   border-radius: 3rem 3rem 3rem 0;
 }
 
+/*** Footer ***/
 .footer {
   padding-left: 1rem;
 }
@@ -378,6 +383,7 @@ img {
   }
 }
 
+/*** Task Editor ***/
 .taskPopUp {
   display: none;
   height: 30rem;

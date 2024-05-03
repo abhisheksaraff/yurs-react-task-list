@@ -2,7 +2,7 @@ import createTask from "../createTask";
 
 const SampleTasks = () => [
   createTask("Take out Trash", new Date("2024-05-25").toDateString(), false, [
-    "non-urgent",
+    "nonurgent",
     "weekly",
     "home",
   ]),
@@ -22,7 +22,7 @@ const SampleTasks = () => [
     "weekly",
   ]),
   createTask("Cook Food", new Date("2024-04-23").toDateString(), false, [
-    "non-urgent",
+    "nonurgent",
     "daily",
     "home",
   ]),
@@ -41,10 +41,10 @@ const SampleTasks = () => [
     "Go Shopping for clothes",
     new Date("2024-05-02").toDateString(),
     true,
-    ["personal", "non-urgent"]
+    ["personal", "nonurgent"]
   ),
   createTask("Take out Trash", new Date("2024-05-25").toDateString(), false, [
-    "non-urgent",
+    "nonurgent",
     "weekly",
     "home",
   ]),
