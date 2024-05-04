@@ -7,7 +7,7 @@
 
 Task List is designed to help you manage your tasks with ease. Whether you're juggling work, school, or personal commitments, our app provides a sleek and intuitive interface to keep you organized and on track. With a fluid and playful response to user interaction, our app makes task management a delightful experience.
 
-**Check it out here:** https://www.link.com/
+**Check it out here:** https://abhisheksaraff.github.io/yurs-react-task-list/
 
 # Features
 

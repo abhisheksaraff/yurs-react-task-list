@@ -29,7 +29,7 @@ function NavBar({
         <Link
           to="yurs-react-task-list/CompletedTasks"
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage("yurs-react-task-list//CompletedTasks")}
+          onClick={() => setCurrentPage("yurs-react-task-list/CompletedTasks")}
         >
           {currentPage === "yurs-react-task-list/CompletedTasks" && (
             <div className="pageName selected">Completed</div>
