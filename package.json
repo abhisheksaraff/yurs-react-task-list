@@ -1,4 +1,5 @@
 {
+  "deploy": "https://abhisheksaraff.github.io/yurs-react-task-list/",
   "name": "yurs-react-task-list",
   "version": "0.1.0",
   "private": true,
