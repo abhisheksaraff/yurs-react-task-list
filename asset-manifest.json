@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/yurs-react-task-list/static/css/main.a9112048.css",
-    "main.js": "/yurs-react-task-list/static/js/main.2c51e35d.js",
+    "main.js": "/yurs-react-task-list/static/js/main.b991f94c.js",
     "index.html": "/yurs-react-task-list/index.html",
     "main.a9112048.css.map": "/yurs-react-task-list/static/css/main.a9112048.css.map",
-    "main.2c51e35d.js.map": "/yurs-react-task-list/static/js/main.2c51e35d.js.map"
+    "main.b991f94c.js.map": "/yurs-react-task-list/static/js/main.b991f94c.js.map"
   },
   "entrypoints": [
     "static/css/main.a9112048.css",
-    "static/js/main.2c51e35d.js"
+    "static/js/main.b991f94c.js"
   ]
 }
