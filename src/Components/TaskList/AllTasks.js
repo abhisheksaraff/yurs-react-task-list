@@ -1,4 +1,4 @@
-import TaskThumbnail from "./Components/TaskThumbnail";
+import TaskThumbnail from "./SubComponents/TaskThumbnail";
 
 function AllTasks({
   tasks,

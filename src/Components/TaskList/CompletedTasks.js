@@ -1,7 +1,7 @@
-import TaskThumbnail from "./Components/TaskThumbnail";
 import { useEffect, useState } from "react";
+import TaskThumbnail from "./SubComponents/TaskThumbnail";
 
-function TodoTasks({
+function CompletedTasks({
   tasks,
   setTasks,
   selectedTags,
@@ -11,27 +11,27 @@ function TodoTasks({
   setTaskToEdit,
   blurPage,
 }) {
-  const taskIsTodo = (task) => !task.isCompleted;
-  const getTodoTasks = tasks.filter(taskIsTodo);
+  const taskIsCompleted = (task) => task.isCompleted;
+  
+  const getCompletedTasks = tasks.filter(taskIsCompleted);
+  const [completedTasks, setCompletedTasks] = useState(getCompletedTasks);
 
-  const [todoTasks, setTodoTasks] = useState(getTodoTasks);
-
-  useEffect(() => setTodoTasks(getTodoTasks),[tasks]);
+  useEffect(() => setCompletedTasks(getCompletedTasks),[tasks]);
 
   /* Mark Task Complete/ Incomplete */
   const reload = (taskId) => {
-    let tempTasks = Object.values(getTodoTasks).map((task) => task); //Holds a copy of tasks
+    let tempTasks = Object.values(completedTasks).map((task) => task); //Holds a copy of tasks
     tempTasks.forEach((task) => {
-      if (task.id === taskId) task.isCompleted = true;
+      if (task.id === taskId) task.isCompleted = false;
     });
 
-    setTodoTasks(tempTasks.filter(taskIsTodo));
+    setCompletedTasks(tempTasks.filter(taskIsCompleted));
   };
 
   return (
-    <div className="todoTasks">
+    <div className="completedTasks">
       <div className="task"></div>
-      {todoTasks.map((task) => {
+      {completedTasks.map((task) => {
         return (
           <TaskThumbnail
             tasks={tasks}
@@ -51,4 +51,4 @@ function TodoTasks({
   );
 }
 
-export default TodoTasks;
+export default CompletedTasks;
