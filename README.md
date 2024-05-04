@@ -59,4 +59,4 @@ The coding style of this project follows the conventions of React.js and JavaScr
 
 # License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute this software for any purpose, subject to the terms of the license agreement. See the LICENSE file for details.
+This project is licensed under the MIT License. You are free to use, modify, and distribute this software for any purpose, subject to the terms of license agreement. See the LICENSE file for details.
