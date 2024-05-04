@@ -17,36 +17,36 @@ function NavBar({
       <div className="logo">My Tasks</div>
       <div className="navigation btn-group">
         <Link
-          to="yurs-react-task-list/"
+          to=""
           className="navigation-button badge rounded-pill border-light border border-1 fs-5"
-          onClick={() => setCurrentPage("yurs-react-task-list/")}
+          onClick={() => setCurrentPage("")}
         >
-          {currentPage === "yurs-react-task-list/" && <div className="pageName selected">All</div>}
-          {!(currentPage === "yurs-react-task-list/") && (
+          {currentPage === "" && <div className="pageName selected">All</div>}
+          {!(currentPage === "") && (
             <div className="pageName not-selected">All</div>
           )}
         </Link>
         <Link
-          to="yurs-react-task-list/CompletedTasks"
+          to="CompletedTasks"
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage("yurs-react-task-list/CompletedTasks")}
+          onClick={() => setCurrentPage("CompletedTasks")}
         >
-          {currentPage === "yurs-react-task-list/CompletedTasks" && (
+          {currentPage === "CompletedTasks" && (
             <div className="pageName selected">Completed</div>
           )}
-          {!(currentPage === "yurs-react-task-list/CompletedTasks") && (
+          {!(currentPage === "CompletedTasks") && (
             <div className="pageName not-selected">Completed</div>
           )}
         </Link>
         <Link
-          to="yurs-react-task-list/TodoTasks"
+          to="todoTasks"
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage("yurs-react-task-list/TodoTasks")}
+          onClick={() => setCurrentPage("todoTasks")}
         >
-          {currentPage === "yurs-react-task-list/TodoTasks" && (
+          {currentPage === "todoTasks" && (
             <div className="pageName selected">Todo</div>
           )}
-          {!(currentPage === "yurs-react-task-list/TodoTasks") && (
+          {!(currentPage === "todoTasks") && (
             <div className="pageName not-selected">Todo</div>
           )}
         </Link>

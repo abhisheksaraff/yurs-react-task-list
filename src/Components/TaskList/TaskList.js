@@ -20,7 +20,7 @@ function TaskList() {
   const [tasks, setTasks] = useState(SampleTasks());
   const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
   const [selectedTags, setSelectedTags] = useState([]);
-  const [currentPage, setCurrentPage] = useState("yurs-react-task-list/");
+  const [currentPage, setCurrentPage] = useState("");
   const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
 
   useEffect(() => {
@@ -115,7 +115,7 @@ function TaskList() {
           <div className="content">
             <Routes>
               <Route
-                path="yurs-react-task-list/"
+                path=""
                 element={
                   <AllTasks
                     tasks={tasks}
@@ -130,7 +130,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="yurs-react-task-list/TodoTasks"
+                path="todoTasks"
                 element={
                   <TodoTasks
                     tasks={tasks}
@@ -145,7 +145,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="yurs-react-task-list/completedTasks"
+                path="completedTasks"
                 element={
                   <CompletedTasks
                     tasks={tasks}
