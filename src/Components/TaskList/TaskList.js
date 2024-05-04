@@ -17,12 +17,12 @@ import "../../App.css";
 import createTask from "./createTask";
 
 function TaskList() {
-  const ADDRESS = "yurs-react-task-list/";
+  const address = "yurs-react-task-list/";
 
   const [tasks, setTasks] = useState(SampleTasks());
   const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
   const [selectedTags, setSelectedTags] = useState([]);
-  const [currentPage, setCurrentPage] = useState(ADDRESS);
+  const [currentPage, setCurrentPage] = useState(window.location.pathname + window.location.search);
   const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
 
   useEffect(() => {
@@ -105,7 +105,7 @@ function TaskList() {
       <BrowserRouter>
         <div className="page">
           <NavBar
-            address={ADDRESS}
+            address={address}
             displayTags={displayTags}
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}
@@ -118,7 +118,7 @@ function TaskList() {
           <div className="content">
             <Routes>
               <Route
-                path="yurs-react-task-list/"
+                path={address}
                 element={
                   <AllTasks
                     tasks={tasks}
@@ -133,7 +133,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="yurs-react-task-list/TodoTasks"
+                path={address + "todoTasks"}
                 element={
                   <TodoTasks
                     tasks={tasks}
@@ -148,7 +148,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="yurs-react-task-list/completedTasks"
+                path={address + "completedTasks"}
                 element={
                   <CompletedTasks
                     tasks={tasks}

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import TaskThumbnail from "./SubComponents/TaskThumbnail";
 
 function AllTasks({
@@ -10,6 +11,17 @@ function AllTasks({
   setTaskToEdit,
   blurPage,
 }) {
+  //Makes sure page header are highlighted on reload
+  useEffect(() => {
+    const allTasksButton = document.getElementsByClassName("pageName")[0];
+    allTasksButton.classList.add("selected");
+    allTasksButton.classList.remove("not-selected");
+    return () => {
+      allTasksButton.classList.add("not-selected");
+      allTasksButton.classList.remove("selected");
+    };
+  });
+
   const reload = () => {};
   return (
     <div className="allTask">

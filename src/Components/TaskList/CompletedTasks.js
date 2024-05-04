@@ -12,11 +12,22 @@ function CompletedTasks({
   blurPage,
 }) {
   const taskIsCompleted = (task) => task.isCompleted;
-  
+
   const getCompletedTasks = tasks.filter(taskIsCompleted);
   const [completedTasks, setCompletedTasks] = useState(getCompletedTasks);
 
-  useEffect(() => setCompletedTasks(getCompletedTasks),[tasks]);
+  //Makes sure page header are highlighted on reload
+  useEffect(() => {
+    const completedTasksButton = document.getElementsByClassName("pageName")[1];
+    completedTasksButton.classList.add("selected");
+    completedTasksButton.classList.remove("not-selected");
+    return () => {
+      completedTasksButton.classList.add("not-selected");
+      completedTasksButton.classList.remove("selected");
+    };
+  });
+
+  useEffect(() => setCompletedTasks(getCompletedTasks), [tasks]);
 
   /* Mark Task Complete/ Incomplete */
   const reload = (taskId) => {

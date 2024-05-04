@@ -16,7 +16,18 @@ function TodoTasks({
 
   const [todoTasks, setTodoTasks] = useState(getTodoTasks);
 
-  useEffect(() => setTodoTasks(getTodoTasks),[tasks]);
+  useEffect(() => setTodoTasks(getTodoTasks), [tasks]);
+
+  //Makes sure page header are highlighted on reload
+  useEffect(() => {
+    const todoTasksButton = document.getElementsByClassName("pageName")[2];
+    todoTasksButton.classList.add("selected");
+    todoTasksButton.classList.remove("not-selected");
+    return () => {
+      todoTasksButton.classList.add("not-selected");
+      todoTasksButton.classList.remove("selected");
+    };
+  });
 
   /* Mark Task Complete/ Incomplete */
   const reload = (taskId) => {

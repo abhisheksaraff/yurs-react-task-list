@@ -13,6 +13,7 @@ function NavBar({
   displayTaskPopUp,
   setTaskToEdit,
 }) {
+
   return (
     <div className="NavBar fixed-top">
       <div className="logo">My Tasks</div>
@@ -30,26 +31,26 @@ function NavBar({
           )}
         </Link>
         <Link
-          to={address + "CompletedTasks"}
+          to={address + "completedTasks"}
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage(address + "CompletedTasks")}
+          onClick={() => setCurrentPage(address + "completedTasks")}
         >
-          {currentPage === address + "CompletedTasks" && (
+          {currentPage === address + "completedTasks" && (
             <div className="pageName selected">Completed</div>
           )}
-          {!(currentPage === address + "CompletedTasks") && (
+          {!(currentPage === address + "completedTasks") && (
             <div className="pageName not-selected">Completed</div>
           )}
         </Link>
         <Link
-          to={address + "TodoTasks"}
+          to={address + "todoTasks"}
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage(address + "TodoTasks")}
+          onClick={() => setCurrentPage(address + "todoTasks")}
         >
-          {currentPage === address + "TodoTasks" && (
+          {currentPage === address + "todoTasks" && (
             <div className="pageName selected">Todo</div>
           )}
-          {!(currentPage === address + "TodoTasks") && (
+          {!(currentPage === address + "todoTasks") && (
             <div className="pageName not-selected">Todo</div>
           )}
         </Link>
