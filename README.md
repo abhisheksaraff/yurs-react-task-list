@@ -1,6 +1,6 @@
 # My Task List
 
-  <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="html 5 logo" width="150" title="HTML5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz9xXfiY5MhSMIsO0tHb_JWObFowaa58WwNuzKsZy7JA&s" alt="css 3 logo" width="90" title="CSS 3">
+  <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="html 5 logo" width="150" title="HTML5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz9xXfiY5MhSMIsO0tHb_JWObFowaa58WwNuzKsZy7JA&s" alt="css 3 logo" width="130" title="CSS 3">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" width="150" title="JavaScript">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png" alt="React logo"  width="150" title="React">
   <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="BootStrap logo" width="150" title="BootStrap">
