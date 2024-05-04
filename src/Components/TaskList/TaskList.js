@@ -20,7 +20,7 @@ function TaskList() {
   const [tasks, setTasks] = useState(SampleTasks());
   const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
   const [selectedTags, setSelectedTags] = useState([]);
-  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const [currentPage, setCurrentPage] = useState("yurs-react-task-list/");
   const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
 
   useEffect(() => {
