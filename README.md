@@ -1,9 +1,9 @@
 # My Task List
 
-  <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="html 5 logo" width="200" title="HTML5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz9xXfiY5MhSMIsO0tHb_JWObFowaa58WwNuzKsZy7JA&s" alt="css 3 logo" width="140" title="CSS 3">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" width="200" title="JavaScript">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png" alt="React logo"  width="200" title="React">
-  <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="BootStrap logo" width="200" title="BootStrap">
+  <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="html 5 logo" width="150" title="HTML5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz9xXfiY5MhSMIsO0tHb_JWObFowaa58WwNuzKsZy7JA&s" alt="css 3 logo" width="90" title="CSS 3">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" width="150" title="JavaScript">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png" alt="React logo"  width="150" title="React">
+  <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="BootStrap logo" width="150" title="BootStrap">
 
 Task List is designed to help you manage your tasks with ease. Whether you're juggling work, school, or personal commitments, our app provides a sleek and intuitive interface to keep you organized and on track. With a fluid and playful response to user interaction, our app makes task management a delightful experience.
 
