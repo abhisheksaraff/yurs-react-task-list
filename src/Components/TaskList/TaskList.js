@@ -1,6 +1,6 @@
 /* Components */
-import NavBar from "./SubComponents/NavBar"
-import Footer from "./SubComponents/Footer"
+import NavBar from "./SubComponents/NavBar";
+import Footer from "./SubComponents/Footer";
 import SampleTasks from "./SubComponents/SampleTasks";
 import TaskPopUp from "./SubComponents/TaskPopUp";
 
@@ -17,10 +17,12 @@ import "../../App.css";
 import createTask from "./createTask";
 
 function TaskList() {
+  const ADDRESS = "yurs-react-task-list/";
+
   const [tasks, setTasks] = useState(SampleTasks());
   const [displayTags, setDisplayTags] = useState(getDisplayTags(tasks));
   const [selectedTags, setSelectedTags] = useState([]);
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useState(ADDRESS);
   const [taskToEdit, setTaskToEdit] = useState(createTask("", "", false, []));
 
   useEffect(() => {
@@ -103,6 +105,7 @@ function TaskList() {
       <BrowserRouter>
         <div className="page">
           <NavBar
+            address={ADDRESS}
             displayTags={displayTags}
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}
@@ -115,7 +118,7 @@ function TaskList() {
           <div className="content">
             <Routes>
               <Route
-                path=""
+                path="yurs-react-task-list/"
                 element={
                   <AllTasks
                     tasks={tasks}
@@ -130,7 +133,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="todoTasks"
+                path="yurs-react-task-list/TodoTasks"
                 element={
                   <TodoTasks
                     tasks={tasks}
@@ -145,7 +148,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="completedTasks"
+                path="yurs-react-task-list/completedTasks"
                 element={
                   <CompletedTasks
                     tasks={tasks}

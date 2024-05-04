@@ -3,6 +3,7 @@ import Tag from "./Tag";
 import createTask from "../createTask";
 
 function NavBar({
+  address,
   displayTags,
   selectedTags,
   setSelectedTags,
@@ -10,43 +11,45 @@ function NavBar({
   setCurrentPage,
   blurPage,
   displayTaskPopUp,
-  setTaskToEdit
+  setTaskToEdit,
 }) {
   return (
     <div className="NavBar fixed-top">
       <div className="logo">My Tasks</div>
       <div className="navigation btn-group">
         <Link
-          to=""
+          to={address}
           className="navigation-button badge rounded-pill border-light border border-1 fs-5"
-          onClick={() => setCurrentPage("")}
+          onClick={() => setCurrentPage(address)}
         >
-          {currentPage === "" && <div className="pageName selected">All</div>}
-          {!(currentPage === "") && (
+          {currentPage === address && (
+            <div className="pageName selected">All</div>
+          )}
+          {!(currentPage === address) && (
             <div className="pageName not-selected">All</div>
           )}
         </Link>
         <Link
-          to="CompletedTasks"
+          to={address + "CompletedTasks"}
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage("CompletedTasks")}
+          onClick={() => setCurrentPage(address + "CompletedTasks")}
         >
-          {currentPage === "CompletedTasks" && (
+          {currentPage === address + "CompletedTasks" && (
             <div className="pageName selected">Completed</div>
           )}
-          {!(currentPage === "CompletedTasks") && (
+          {!(currentPage === address + "CompletedTasks") && (
             <div className="pageName not-selected">Completed</div>
           )}
         </Link>
         <Link
-          to="todoTasks"
+          to={address + "TodoTasks"}
           className="navigation-button badge rounded-pill border-white border border-1 fs-5"
-          onClick={() => setCurrentPage("todoTasks")}
+          onClick={() => setCurrentPage(address + "TodoTasks")}
         >
-          {currentPage === "todoTasks" && (
+          {currentPage === address + "TodoTasks" && (
             <div className="pageName selected">Todo</div>
           )}
-          {!(currentPage === "todoTasks") && (
+          {!(currentPage === address + "TodoTasks") && (
             <div className="pageName not-selected">Todo</div>
           )}
         </Link>
@@ -58,9 +61,7 @@ function NavBar({
             displayTaskPopUp(true);
           }}
         >
-          <div className="pageName not-selected">
-            Add Task
-          </div>
+          <div className="pageName not-selected">Add Task</div>
         </div>
       </div>
 
