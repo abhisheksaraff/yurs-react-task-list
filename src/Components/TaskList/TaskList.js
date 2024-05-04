@@ -115,7 +115,7 @@ function TaskList() {
           <div className="content">
             <Routes>
               <Route
-                path="/"
+                path="yurs-react-task-list/"
                 element={
                   <AllTasks
                     tasks={tasks}
@@ -130,7 +130,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="/TodoTasks"
+                path="yurs-react-task-list/TodoTasks"
                 element={
                   <TodoTasks
                     tasks={tasks}
@@ -145,7 +145,7 @@ function TaskList() {
                 }
               />
               <Route
-                path="/completedTasks"
+                path="yurs-react-task-list/completedTasks"
                 element={
                   <CompletedTasks
                     tasks={tasks}
